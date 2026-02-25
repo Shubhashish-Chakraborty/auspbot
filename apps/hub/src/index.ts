@@ -30,7 +30,7 @@ async function notifyMe(platform: string, sender: string, server: string, messag
     const onlyTextMessage = `Message: ${safeMessage}`;
 
     try {
-        await tgBot.telegram.sendMessage(TELEGRAM_CHAT_ID, onlyTextMessage);
+        await tgBot.telegram.sendMessage(TELEGRAM_CHAT_ID, onlyTextMessage, { parse_mode: 'HTML' });
         console.log(`[Success] Forwarded ${platform} message to Telegram.`);
     } catch (error) {
         console.error('[Error] Failed to send Telegram message:', error);
