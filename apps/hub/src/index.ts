@@ -27,7 +27,7 @@ async function notifyMe(platform: string, sender: string, server: string, messag
     //     `🏢 <b>Server/Workspace:</b> ${safeServer}\n\n` +
     //     `💬 <b>Message:</b>\n${safeMessage}`;
 
-    const onlyTextMessage = `Message: ${safeMessage}`;
+    const onlyTextMessage = `${safeMessage}`;
 
     try {
         await tgBot.telegram.sendMessage(TELEGRAM_CHAT_ID, onlyTextMessage, { parse_mode: 'HTML' });
