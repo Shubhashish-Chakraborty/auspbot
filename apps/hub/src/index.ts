@@ -22,13 +22,15 @@ async function notifyMe(platform: string, sender: string, server: string, messag
     const safeServer = escapeHTML(server);
     const safeMessage = escapeHTML(message);
 
-    const text = `🚨 <b>New ${platform} Alert</b> 🚨\n\n` +
-        `👤 <b>From:</b> ${safeSender}\n` +
-        `🏢 <b>Server/Workspace:</b> ${safeServer}\n\n` +
-        `💬 <b>Message:</b>\n${safeMessage}`;
+    // const text = `🚨 <b>New ${platform} Alert</b> 🚨\n\n` +
+    //     `👤 <b>From:</b> ${safeSender}\n` +
+    //     `🏢 <b>Server/Workspace:</b> ${safeServer}\n\n` +
+    //     `💬 <b>Message:</b>\n${safeMessage}`;
+
+    const onlyTextMessage = `Message: ${safeMessage}`;
 
     try {
-        await tgBot.telegram.sendMessage(TELEGRAM_CHAT_ID, text, { parse_mode: 'HTML' });
+        await tgBot.telegram.sendMessage(TELEGRAM_CHAT_ID, onlyTextMessage);
         console.log(`[Success] Forwarded ${platform} message to Telegram.`);
     } catch (error) {
         console.error('[Error] Failed to send Telegram message:', error);
